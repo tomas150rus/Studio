@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+local.properties
+**/build/
+.DS_Store
+*.iml
+app/src/main/assets/yamnet.tflite
