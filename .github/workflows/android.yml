@@ -17,10 +17,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Install Android SDK 36
+      - name: Inspect available Android SDK
         run: |
           echo "Android SDK: ${ANDROID_HOME}"
-          "${ANDROID_HOME}/cmdline-tools/16.0/bin/sdkmanager" --install 'platforms;android-36' 'build-tools;35.0.0'
+          ls -lah "${ANDROID_HOME}/platforms" || true
+          ls -lah "${ANDROID_HOME}/build-tools" || true
+          find "${ANDROID_HOME}/cmdline-tools" -type f -name sdkmanager 2>/dev/null | head || true
       - name: Gradle 8.13
         uses: gradle/actions/setup-gradle@v4
         with:
